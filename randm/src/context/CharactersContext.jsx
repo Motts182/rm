@@ -5,9 +5,8 @@ const CharactersContext = createContext();
 
 const CharactersProvider = ({ children }) => {
 
-    const [list, setList] = useState([])
-    const [characterOne, setcharacterOne] = useState(null)
-    const [characterTwo, setcharacterTwo] = useState(null)
+    const [characterOne, setcharacterOne] = useState([])
+    const [characterTwo, setcharacterTwo] = useState([])
 
     useEffect(() => {
         const getList = async () => {
@@ -20,13 +19,14 @@ const CharactersProvider = ({ children }) => {
 
         }
         getList();
-    },[list])
+    }, [list])
 
 
     return (
         <CharactersContext.Provider
             value={{
-                list,
+                characterOne,
+                characterTwo
             }}
         >
             {children}
