@@ -15,18 +15,24 @@ const CharactersProvider = ({ children }) => {
 
             const characterList = await axios.get(url);
 
-            setList(characterList.data.results);
+            const url2 = characterList.data.info.next;
+
+            const characterList2 = await axios.get(url2);
+
+            setcharacterTwo(characterList2.data.results);
+
+            setcharacterOne(characterList.data.results);
 
         }
         getList();
-    }, [list])
+    })
 
 
     return (
         <CharactersContext.Provider
             value={{
                 characterOne,
-                characterTwo
+                characterTwo,
             }}
         >
             {children}

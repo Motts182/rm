@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CharactersProvider } from './context/CharactersContext';
 import Layout from './layout/Layout';
 import Home from './pages/home';
+import Info from './pages/Info';
 
 function App() {
 
@@ -11,7 +12,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout />}>
-            <Route index element={<Home />} />
+            <Route index element={<Info />} />
+            <Route path='home'element={<Home />} />
           </Route>
         </Routes>
       </BrowserRouter>
