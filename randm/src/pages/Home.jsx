@@ -6,11 +6,11 @@ const Home = () => {
     const { characterOne, characterTwo } = useContext(CharactersContext);
 
     const [characterOneSelected, setCharacterOneSelected] = useState(" No Selected");
-    const [listCapsOne, setlistCapsOne] = useState([]);
+    const [listCapsOne, setlistCapsOne] = useState(null);
 
 
     const [characterTwoSelected, setCharacterTwoSelected] = useState(" No Selected")
-    const [listCapsTwo, setlistCapsTwo] = useState([]);
+    const [listCapsTwo, setlistCapsTwo] = useState(null);
 
 
     const setInfoCharacterOne = (name, caps) => {
@@ -75,40 +75,46 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="grid grid-cols-3 p-1  h-2/4 bg-blue-300 ">
-                <div className="border-2">
-                    {`Character #1 - Only Episodes `}
-                    <div className="grid grid-cols-12 ">
-                        {listCapsOne.map(function (d, idx) {
-                            let conSubstring = d.substring(40, 42);
-                            return (<div key={idx}>{conSubstring}</div>)
-                        })}
-                    </div>
-                </div>
-                <div className="border-2">
-                    {`Character #1 & #2 - Only Episodes `}
-                    <div className="grid grid-cols-12">
-                        {listCapsOne.map(function (d, idx) {
-                            let conSubstring = d.substring(40, 42);
-                            return (<div key={idx}>{conSubstring}</div>)
-                        })}
 
-                        {listCapsTwo.map(function (d, idx) {
-                            let conSubstring = d.substring(40, 42);
-                            return (<div key={idx}>{conSubstring}</div>)
-                        })}
+            {listCapsOne && listCapsTwo ?
+                <div className="grid grid-cols-3 p-1  h-2/4 bg-blue-300 ">
+
+                    <div className="border-2">
+                        {`Character #1 - Only Episodes `}
+                        <div className="grid grid-cols-12 ">
+                            {listCapsOne.map(function (d, idx) {
+                                let conSubstring = d.substring(40, 42);
+                                return (<div key={idx}>{conSubstring}</div>)
+                            })}
+                        </div>
+                    </div>
+                    <div className="border-2">
+                        {`Character #1 & #2 - Only Episodes `}
+                        <div className="grid grid-cols-12">
+                            {listCapsOne.map(function (d, idx) {
+                                let conSubstring = d.substring(40, 42);
+                                return (<div key={idx}>{conSubstring}</div>)
+                            })}
+
+                            {listCapsTwo.map(function (d, idx) {
+                                let conSubstring = d.substring(40, 42);
+                                return (<div key={idx}>{conSubstring}</div>)
+                            })}
+                        </div>
+                    </div>
+                    <div className="border-2">
+                        {`Character #2 - Only Episodes `}
+                        <div className="grid grid-cols-12">
+                            {listCapsTwo.map(function (d, idx) {
+                                let conSubstring = d.substring(40, 42);
+                                return (<div key={idx}>{conSubstring}</div>)
+                            })}
+                        </div>
                     </div>
                 </div>
-                <div className="border-2">
-                    {`Character #2 - Only Episodes `}
-                    <div className="grid grid-cols-12">
-                        {listCapsTwo.map(function (d, idx) {
-                            let conSubstring = d.substring(40, 42);
-                            return (<div key={idx}>{conSubstring}</div>)
-                        })}
-                    </div>
-                </div>
-            </div>
+                : null
+            }
+
         </div >
     );
 }
